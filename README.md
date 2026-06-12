@@ -184,6 +184,10 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for details.
 
 ---
 
+## Changelog
+
+See [CHANGELOG.md](CHANGELOG.md).
+
 ## License
 
 MIT — see [LICENSE](LICENSE).

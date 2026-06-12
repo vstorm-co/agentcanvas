@@ -44,7 +44,7 @@ build-backend = "hatchling.build"
 packages = ["agentcanvas"]
 
 [tool.hatch.build.targets.sdist]
-include = ["agentcanvas", "README.md", "LICENSE", "assets/logo.svg"]
+include = ["agentcanvas", "README.md", "CHANGELOG.md", "LICENSE", "assets/logo.svg"]
 
 [dependency-groups]
 dev = [
