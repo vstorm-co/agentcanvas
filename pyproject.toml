@@ -1,6 +1,6 @@
 [project]
 name = "agentcanvas"
-version = "0.1.0"
+version = "0.1.1"
 description = "Visualize Pydantic AI agent workflows from Logfire traces as an interactive HTML diagram."
 readme = "README.md"
 requires-python = ">=3.12"
