@@ -208,6 +208,7 @@ kbd{font-family:var(--mono);font-size:10.5px;background:#eceef3;border:1px solid
 .ph .x{margin-left:auto;width:31px;height:31px;border:1px solid var(--line);background:#fff;border-radius:8px;cursor:pointer;color:var(--muted);font-size:17px;line-height:1}
 .ph .x:hover{background:#f1f2f6}
 .pbody{padding:17px;overflow:auto;font-size:13px}
+.mb{margin-bottom:15px}
 .field{margin-bottom:15px}
 .field .fl{font-size:10px;text-transform:uppercase;letter-spacing:.06em;color:var(--faint);font-weight:650;margin-bottom:6px}
 .field pre,.field .txt{margin:0;background:#fafbfc;border:1px solid var(--line);border-radius:9px;padding:10px 12px;
@@ -646,7 +647,7 @@ function modelInspector(r){
   (r.decided_tool_calls||[]).forEach(t=>msgs.push(`<div class="msg"><div class="mr" style="color:var(--accent-deep)">tool call</div><div class="mc">${esc(t)}</div></div>`));
   (r.text_out||[]).forEach(t=>msgs.push(`<div class="msg"><div class="mr" style="color:#5b53c4">text</div><div class="mc">${esc(t)}</div></div>`));
   const tools=(r.available_tools||[]).map(t=>`<div class="toolitem"><code>${esc(t.name)}</code><span style="color:var(--muted)">${esc((t.description||"").slice(0,70))}</span></div>`).join("");
-  return `<div class="grid2">
+  return `<div class="grid2 mb">
     <div class="metric"><div class="ml">Input tokens</div><div class="mv">${nfmt(r.input_tokens)}</div></div>
     <div class="metric"><div class="ml">Output tokens</div><div class="mv">${nfmt(r.output_tokens)}</div></div>
     <div class="metric"><div class="ml">Reasoning tok</div><div class="mv">${nfmt(r.reasoning_tokens)}</div></div>
