@@ -1,0 +1,12 @@
+<svg width="96" height="96" viewBox="0 0 96 96" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="agentcanvas logo">
+  <rect x="4" y="4" width="88" height="88" rx="22" fill="#0F1B33"/>
+  <!-- flow connectors -->
+  <path d="M34 48 H46" stroke="#4C7DF0" stroke-width="3.2" stroke-linecap="round"/>
+  <path d="M58 32 C50 32, 50 48, 46 48" stroke="#4C7DF0" stroke-width="3.2" stroke-linecap="round" fill="none"/>
+  <path d="M58 64 C50 64, 50 48, 46 48" stroke="#4C7DF0" stroke-width="3.2" stroke-linecap="round" fill="none"/>
+  <!-- nodes -->
+  <circle cx="30" cy="48" r="7.5" fill="#4C7DF0"/>
+  <circle cx="62" cy="32" r="6.5" fill="#22B8A0"/>
+  <circle cx="62" cy="64" r="6.5" fill="#E0892B"/>
+  <circle cx="30" cy="48" r="3" fill="#0F1B33"/>
+</svg>

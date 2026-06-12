@@ -1,0 +1,33 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v5
+
+      - name: Set up Python
+        run: uv python install 3.12
+
+      - name: Install dependencies
+        run: uv sync --all-extras --prerelease=allow
+
+      - name: Lint
+        run: uv run --prerelease=allow ruff check .
+
+      - name: Format check
+        run: uv run --prerelease=allow ruff format --check .
+
+      - name: Type-check
+        run: uv run --prerelease=allow mypy agentcanvas viz.py assets/scripts/main.py assets/scripts/make_demo.py assets/scripts/make_screenshots.py
+
+      - name: Test
+        run: uv run --prerelease=allow pytest

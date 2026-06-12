@@ -1,0 +1,2438 @@
+{
+ "trace_id": "019eb660e97ce1ab3201deac9dededc6",
+ "spans": [
+  {
+   "span_id": "6486db1c870a0137",
+   "parent_span_id": null,
+   "span_name": "conversation",
+   "start_timestamp": "2026-06-11T11:11:05.084192Z",
+   "end_timestamp": "2026-06-11T11:11:38.121791Z",
+   "duration": 33.037599,
+   "otel_status_code": "UNSET",
+   "otel_status_message": null,
+   "attributes": {
+    "code.filepath": "main.py",
+    "code.function": "main",
+    "code.lineno": 135,
+    "logfire.metrics": {
+     "gen_ai.client.token.usage": {
+      "details": [
+       {
+        "attributes": {
+         "gen_ai.operation.name": "chat",
+         "gen_ai.provider.name": "openrouter",
+         "gen_ai.request.model": "openai/gpt-5.5",
+         "gen_ai.response.model": "openai/gpt-5.5-20260423",
+         "gen_ai.system": "openrouter",
+         "gen_ai.token.type": "input"
+        },
+        "total": 2345
+       },
+       {
+        "attributes": {
+         "gen_ai.operation.name": "chat",
+         "gen_ai.provider.name": "openrouter",
+         "gen_ai.request.model": "openai/gpt-5.5",
+         "gen_ai.response.model": "openai/gpt-5.5-20260423",
+         "gen_ai.system": "openrouter",
+         "gen_ai.token.type": "output"
+        },
+        "total": 1240
+       }
+      ],
+      "total": 3585
+     }
+    },
+    "logfire.msg_template": "conversation"
+   }
+  },
+  {
+   "span_id": "21453cf7f243f9ef",
+   "parent_span_id": "6486db1c870a0137",
+   "span_name": "invoke_agent assistant",
+   "start_timestamp": "2026-06-11T11:11:05.088665Z",
+   "end_timestamp": "2026-06-11T11:11:12.370417Z",
+   "duration": 7.281752,
+   "otel_status_code": "UNSET",
+   "otel_status_message": null,
+   "attributes": {
+    "agent_name": "assistant",
+    "final_result": "Hi Kacper! You’re 28 years old, and your estimated birth year is 1998.\n\nI rolled a six-sided die for you: **4**.",
+    "gen_ai.agent.call.id": "019eb660-e97d-724f-a577-eda052dcccb1",
+    "gen_ai.agent.name": "assistant",
+    "gen_ai.aggregated_usage.details.reasoning_tokens": 62,
+    "gen_ai.aggregated_usage.input_tokens": 594,
+    "gen_ai.aggregated_usage.output_tokens": 163,
+    "gen_ai.conversation.id": "019eb660-e97d-724f-a577-ed9fea14618e",
+    "gen_ai.operation.name": "invoke_agent",
+    "gen_ai.system_instructions": [
+     {
+      "type": "text",
+      "content": "You are a friendly assistant. Think briefly about what the user needs, then use your tools to answer concretely. When a question is about visiting a city, delegate to the plan_trip tool. Reply in English."
+     }
+    ],
+    "logfire.metrics": {
+     "gen_ai.client.token.usage": {
+      "details": [
+       {
+        "attributes": {
+         "gen_ai.operation.name": "chat",
+         "gen_ai.provider.name": "openrouter",
+         "gen_ai.request.model": "openai/gpt-5.5",
+         "gen_ai.response.model": "openai/gpt-5.5-20260423",
+         "gen_ai.system": "openrouter",
+         "gen_ai.token.type": "input"
+        },
+        "total": 594
+       },
+       {
+        "attributes": {
+         "gen_ai.operation.name": "chat",
+         "gen_ai.provider.name": "openrouter",
+         "gen_ai.request.model": "openai/gpt-5.5",
+         "gen_ai.response.model": "openai/gpt-5.5-20260423",
+         "gen_ai.system": "openrouter",
+         "gen_ai.token.type": "output"
+        },
+        "total": 163
+       }
+      ],
+      "total": 757
+     }
+    },
+    "model_name": "openai/gpt-5.5",
+    "pydantic_ai.all_messages": [
+     {
+      "role": "user",
+      "parts": [
+       {
+        "type": "text",
+        "content": "Hi! Introduce me — my name, age and birth year — then roll a six-sided die."
+       }
+      ]
+     },
+     {
+      "role": "assistant",
+      "parts": [
+       {
+        "type": "thinking",
+        "content": "**Determining user details**\n\nI need to gather the user's profile and calculate their birth year based on their age. I'll call the user profile tool with no arguments, as it likely retrieves information for the current user. Then, I can calculate the birth year from their age, which should work since it's independently taken from the profile. Rolling the dice seems to be separate as well, so I might be able to execute everything in parallel!"
+       },
+       {
+        "type": "thinking",
+        "content": ""
+       },
+       {
+        "type": "tool_call",
+        "id": "call_wER4zboPst8F6fnmM49i0YOF",
+        "name": "get_user_profile",
+        "arguments": "{}"
+       },
+       {
+        "type": "tool_call",
+        "id": "call_CSdq8aEPmnkPmNqu0dr1brHu",
+        "name": "calculate_birth_year",
+        "arguments": "{}"
+       },
+       {
+        "type": "tool_call",
+        "id": "call_VJgMUNf6mcD4YELJ4MMzF0Xa",
+        "name": "roll_dice",
+        "arguments": "{\"sides\":6}"
+       }
+      ],
+      "finish_reason": "tool_call"
+     },
+     {
+      "role": "user",
+      "parts": [
+       {
+        "type": "tool_call_response",
+        "id": "call_wER4zboPst8F6fnmM49i0YOF",
+        "name": "get_user_profile",
+        "result": "The user's name is Kacper and they are 28 years old."
+       },
+       {
+        "type": "tool_call_response",
+        "id": "call_CSdq8aEPmnkPmNqu0dr1brHu",
+        "name": "calculate_birth_year",
+        "result": 1998
+       },
+       {
+        "type": "tool_call_response",
+        "id": "call_VJgMUNf6mcD4YELJ4MMzF0Xa",
+        "name": "roll_dice",
+        "result": 4
+       }
+      ]
+     },
+     {
+      "role": "assistant",
+      "parts": [
+       {
+        "type": "text",
+        "content": "Hi Kacper! You’re 28 years old, and your estimated birth year is 1998.\n\nI rolled a six-sided die for you: **4**."
+       }
+      ],
+      "finish_reason": "stop"
+     }
+    ]
+   }
+  },
+  {
+   "span_id": "7507cd68453de4ca",
+   "parent_span_id": "21453cf7f243f9ef",
+   "span_name": "chat openai/gpt-5.5",
+   "start_timestamp": "2026-06-11T11:11:05.090334Z",
+   "end_timestamp": "2026-06-11T11:11:11.043467Z",
+   "duration": 5.953133,
+   "otel_status_code": "UNSET",
+   "otel_status_message": null,
+   "attributes": {
+    "gen_ai.agent.call.id": "019eb660-e97d-724f-a577-eda052dcccb1",
+    "gen_ai.agent.name": "assistant",
+    "gen_ai.conversation.id": "019eb660-e97d-724f-a577-ed9fea14618e",
+    "gen_ai.input.messages": [
+     {
+      "role": "user",
+      "parts": [
+       {
+        "type": "text",
+        "content": "Hi! Introduce me — my name, age and birth year — then roll a six-sided die."
+       }
+      ]
+     }
+    ],
+    "gen_ai.operation.name": "chat",
+    "gen_ai.output.messages": [
+     {
+      "role": "assistant",
+      "parts": [
+       {
+        "type": "thinking",
+        "content": "**Determining user details**\n\nI need to gather the user's profile and calculate their birth year based on their age. I'll call the user profile tool with no arguments, as it likely retrieves information for the current user. Then, I can calculate the birth year from their age, which should work since it's independently taken from the profile. Rolling the dice seems to be separate as well, so I might be able to execute everything in parallel!"
+       },
+       {
+        "type": "thinking",
+        "content": ""
+       },
+       {
+        "type": "tool_call",
+        "id": "call_wER4zboPst8F6fnmM49i0YOF",
+        "name": "get_user_profile",
+        "arguments": "{}"
+       },
+       {
+        "type": "tool_call",
+        "id": "call_CSdq8aEPmnkPmNqu0dr1brHu",
+        "name": "calculate_birth_year",
+        "arguments": "{}"
+       },
+       {
+        "type": "tool_call",
+        "id": "call_VJgMUNf6mcD4YELJ4MMzF0Xa",
+        "name": "roll_dice",
+        "arguments": "{\"sides\":6}"
+       }
+      ],
+      "finish_reason": "tool_call"
+     }
+    ],
+    "gen_ai.provider.name": "openrouter",
+    "gen_ai.request.model": "openai/gpt-5.5",
+    "gen_ai.response.finish_reasons": [
+     "tool_call"
+    ],
+    "gen_ai.response.id": "gen-1781176265-94JQDULs4MeyXSLERJBn",
+    "gen_ai.response.model": "openai/gpt-5.5-20260423",
+    "gen_ai.system": "openrouter",
+    "gen_ai.system_instructions": [
+     {
+      "type": "text",
+      "content": "You are a friendly assistant. Think briefly about what the user needs, then use your tools to answer concretely. When a question is about visiting a city, delegate to the plan_trip tool. Reply in English."
+     }
+    ],
+    "gen_ai.tool.definitions": [
+     {
+      "type": "function",
+      "name": "get_user_profile",
+      "description": "Return the current user's name and age.",
+      "parameters": {
+       "additionalProperties": false,
+       "properties": {},
+       "type": "object"
+      }
+     },
+     {
+      "type": "function",
+      "name": "calculate_birth_year",
+      "description": "Estimate the user's birth year from their age.",
+      "parameters": {
+       "additionalProperties": false,
+       "properties": {},
+       "type": "object"
+      }
+     },
+     {
+      "type": "function",
+      "name": "recommend_activity",
+      "description": "Recommend an activity tailored to the user's age.",
+      "parameters": {
+       "additionalProperties": false,
+       "properties": {},
+       "type": "object"
+      }
+     },
+     {
+      "type": "function",
+      "name": "roll_dice",
+      "description": "Roll a die with the given number of sides and return the result.",
+      "parameters": {
+       "additionalProperties": false,
+       "properties": {
+        "sides": {
+         "default": 6,
+         "type": "integer"
+        }
+       },
+       "type": "object"
+      }
+     },
+     {
+      "type": "function",
+      "name": "plan_trip",
+      "description": "Delegate to the trip-planner sub-agent to build a day plan for a city.",
+      "parameters": {
+       "additionalProperties": false,
+       "properties": {
+        "city": {
+         "type": "string"
+        }
+       },
+       "required": [
+        "city"
+       ],
+       "type": "object"
+      }
+     }
+    ],
+    "gen_ai.usage.details.reasoning_tokens": 62,
+    "gen_ai.usage.input_tokens": 210,
+    "gen_ai.usage.output_tokens": 124,
+    "model_request_parameters": {
+     "function_tools": [
+      {
+       "name": "get_user_profile",
+       "parameters_json_schema": {
+        "additionalProperties": false,
+        "properties": {},
+        "type": "object"
+       },
+       "description": "Return the current user's name and age.",
+       "outer_typed_dict_key": null,
+       "strict": false,
+       "sequential": false,
+       "kind": "function",
+       "metadata": null,
+       "timeout": null,
+       "defer_loading": false,
+       "unless_native": null,
+       "with_native": null,
+       "tool_kind": null,
+       "return_schema": null,
+       "include_return_schema": null,
+       "capability_id": null
+      },
+      {
+       "name": "calculate_birth_year",
+       "parameters_json_schema": {
+        "additionalProperties": false,
+        "properties": {},
+        "type": "object"
+       },
+       "description": "Estimate the user's birth year from their age.",
+       "outer_typed_dict_key": null,
+       "strict": false,
+       "sequential": false,
+       "kind": "function",
+       "metadata": null,
+       "timeout": null,
+       "defer_loading": false,
+       "unless_native": null,
+       "with_native": null,
+       "tool_kind": null,
+       "return_schema": null,
+       "include_return_schema": null,
+       "capability_id": null
+      },
+      {
+       "name": "recommend_activity",
+       "parameters_json_schema": {
+        "additionalProperties": false,
+        "properties": {},
+        "type": "object"
+       },
+       "description": "Recommend an activity tailored to the user's age.",
+       "outer_typed_dict_key": null,
+       "strict": false,
+       "sequential": false,
+       "kind": "function",
+       "metadata": null,
+       "timeout": null,
+       "defer_loading": false,
+       "unless_native": null,
+       "with_native": null,
+       "tool_kind": null,
+       "return_schema": null,
+       "include_return_schema": null,
+       "capability_id": null
+      },
+      {
+       "name": "roll_dice",
+       "parameters_json_schema": {
+        "additionalProperties": false,
+        "properties": {
+         "sides": {
+          "default": 6,
+          "type": "integer"
+         }
+        },
+        "type": "object"
+       },
+       "description": "Roll a die with the given number of sides and return the result.",
+       "outer_typed_dict_key": null,
+       "strict": false,
+       "sequential": false,
+       "kind": "function",
+       "metadata": null,
+       "timeout": null,
+       "defer_loading": false,
+       "unless_native": null,
+       "with_native": null,
+       "tool_kind": null,
+       "return_schema": null,
+       "include_return_schema": null,
+       "capability_id": null
+      },
+      {
+       "name": "plan_trip",
+       "parameters_json_schema": {
+        "additionalProperties": false,
+        "properties": {
+         "city": {
+          "type": "string"
+         }
+        },
+        "required": [
+         "city"
+        ],
+        "type": "object"
+       },
+       "description": "Delegate to the trip-planner sub-agent to build a day plan for a city.",
+       "outer_typed_dict_key": null,
+       "strict": true,
+       "sequential": false,
+       "kind": "function",
+       "metadata": null,
+       "timeout": null,
+       "defer_loading": false,
+       "unless_native": null,
+       "with_native": null,
+       "tool_kind": null,
+       "return_schema": null,
+       "include_return_schema": null,
+       "capability_id": null
+      }
+     ],
+     "native_tools": [],
+     "output_mode": "text",
+     "output_object": null,
+     "output_tools": [],
+     "prompted_output_template": null,
+     "allow_text_output": true,
+     "allow_image_output": false,
+     "instruction_parts": [
+      {
+       "content": "You are a friendly assistant. Think briefly about what the user needs, then use your tools to answer concretely. When a question is about visiting a city, delegate to the plan_trip tool. Reply in English.",
+       "dynamic": false,
+       "part_kind": "instruction"
+      }
+     ],
+     "thinking": "medium"
+    },
+    "server.address": "openrouter.ai"
+   }
+  },
+  {
+   "span_id": "205bafb23a395133",
+   "parent_span_id": "21453cf7f243f9ef",
+   "span_name": "execute_tool get_user_profile",
+   "start_timestamp": "2026-06-11T11:11:11.047117Z",
+   "end_timestamp": "2026-06-11T11:11:11.048588Z",
+   "duration": 0.001471,
+   "otel_status_code": "UNSET",
+   "otel_status_message": null,
+   "attributes": {
+    "gen_ai.agent.call.id": "019eb660-e97d-724f-a577-eda052dcccb1",
+    "gen_ai.agent.name": "assistant",
+    "gen_ai.conversation.id": "019eb660-e97d-724f-a577-ed9fea14618e",
+    "gen_ai.operation.name": "execute_tool",
+    "gen_ai.tool.call.arguments": {},
+    "gen_ai.tool.call.id": "call_wER4zboPst8F6fnmM49i0YOF",
+    "gen_ai.tool.call.result": "The user's name is Kacper and they are 28 years old.",
+    "gen_ai.tool.name": "get_user_profile"
+   }
+  },
+  {
+   "span_id": "4493c989f9ae3ebe",
+   "parent_span_id": "21453cf7f243f9ef",
+   "span_name": "execute_tool calculate_birth_year",
+   "start_timestamp": "2026-06-11T11:11:11.047539Z",
+   "end_timestamp": "2026-06-11T11:11:11.048868Z",
+   "duration": 0.001329,
+   "otel_status_code": "UNSET",
+   "otel_status_message": null,
+   "attributes": {
+    "gen_ai.agent.call.id": "019eb660-e97d-724f-a577-eda052dcccb1",
+    "gen_ai.agent.name": "assistant",
+    "gen_ai.conversation.id": "019eb660-e97d-724f-a577-ed9fea14618e",
+    "gen_ai.operation.name": "execute_tool",
+    "gen_ai.tool.call.arguments": {},
+    "gen_ai.tool.call.id": "call_CSdq8aEPmnkPmNqu0dr1brHu",
+    "gen_ai.tool.call.result": 1998,
+    "gen_ai.tool.name": "calculate_birth_year"
+   }
+  },
+  {
+   "span_id": "b68853711c1694bb",
+   "parent_span_id": "21453cf7f243f9ef",
+   "span_name": "execute_tool roll_dice",
+   "start_timestamp": "2026-06-11T11:11:11.047719Z",
+   "end_timestamp": "2026-06-11T11:11:11.048976Z",
+   "duration": 0.001257,
+   "otel_status_code": "UNSET",
+   "otel_status_message": null,
+   "attributes": {
+    "gen_ai.agent.call.id": "019eb660-e97d-724f-a577-eda052dcccb1",
+    "gen_ai.agent.name": "assistant",
+    "gen_ai.conversation.id": "019eb660-e97d-724f-a577-ed9fea14618e",
+    "gen_ai.operation.name": "execute_tool",
+    "gen_ai.tool.call.arguments": {
+     "sides": 6
+    },
+    "gen_ai.tool.call.id": "call_VJgMUNf6mcD4YELJ4MMzF0Xa",
+    "gen_ai.tool.call.result": 4,
+    "gen_ai.tool.name": "roll_dice"
+   }
+  },
+  {
+   "span_id": "72ed5e328c7248b3",
+   "parent_span_id": "21453cf7f243f9ef",
+   "span_name": "chat openai/gpt-5.5",
+   "start_timestamp": "2026-06-11T11:11:11.052302Z",
+   "end_timestamp": "2026-06-11T11:11:12.368747Z",
+   "duration": 1.316445,
+   "otel_status_code": "UNSET",
+   "otel_status_message": null,
+   "attributes": {
+    "gen_ai.agent.call.id": "019eb660-e97d-724f-a577-eda052dcccb1",
+    "gen_ai.agent.name": "assistant",
+    "gen_ai.conversation.id": "019eb660-e97d-724f-a577-ed9fea14618e",
+    "gen_ai.input.messages": [
+     {
+      "role": "user",
+      "parts": [
+       {
+        "type": "text",
+        "content": "Hi! Introduce me — my name, age and birth year — then roll a six-sided die."
+       }
+      ]
+     },
+     {
+      "role": "assistant",
+      "parts": [
+       {
+        "type": "thinking",
+        "content": "**Determining user details**\n\nI need to gather the user's profile and calculate their birth year based on their age. I'll call the user profile tool with no arguments, as it likely retrieves information for the current user. Then, I can calculate the birth year from their age, which should work since it's independently taken from the profile. Rolling the dice seems to be separate as well, so I might be able to execute everything in parallel!"
+       },
+       {
+        "type": "thinking",
+        "content": ""
+       },
+       {
+        "type": "tool_call",
+        "id": "call_wER4zboPst8F6fnmM49i0YOF",
+        "name": "get_user_profile",
+        "arguments": "{}"
+       },
+       {
+        "type": "tool_call",
+        "id": "call_CSdq8aEPmnkPmNqu0dr1brHu",
+        "name": "calculate_birth_year",
+        "arguments": "{}"
+       },
+       {
+        "type": "tool_call",
+        "id": "call_VJgMUNf6mcD4YELJ4MMzF0Xa",
+        "name": "roll_dice",
+        "arguments": "{\"sides\":6}"
+       }
+      ],
+      "finish_reason": "tool_call"
+     },
+     {
+      "role": "user",
+      "parts": [
+       {
+        "type": "tool_call_response",
+        "id": "call_wER4zboPst8F6fnmM49i0YOF",
+        "name": "get_user_profile",
+        "result": "The user's name is Kacper and they are 28 years old."
+       },
+       {
+        "type": "tool_call_response",
+        "id": "call_CSdq8aEPmnkPmNqu0dr1brHu",
+        "name": "calculate_birth_year",
+        "result": 1998
+       },
+       {
+        "type": "tool_call_response",
+        "id": "call_VJgMUNf6mcD4YELJ4MMzF0Xa",
+        "name": "roll_dice",
+        "result": 4
+       }
+      ]
+     }
+    ],
+    "gen_ai.operation.name": "chat",
+    "gen_ai.output.messages": [
+     {
+      "role": "assistant",
+      "parts": [
+       {
+        "type": "text",
+        "content": "Hi Kacper! You’re 28 years old, and your estimated birth year is 1998.\n\nI rolled a six-sided die for you: **4**."
+       }
+      ],
+      "finish_reason": "stop"
+     }
+    ],
+    "gen_ai.provider.name": "openrouter",
+    "gen_ai.request.model": "openai/gpt-5.5",
+    "gen_ai.response.finish_reasons": [
+     "stop"
+    ],
+    "gen_ai.response.id": "gen-1781176271-Tye5OT2E6N6TI3zWndBJ",
+    "gen_ai.response.model": "openai/gpt-5.5-20260423",
+    "gen_ai.system": "openrouter",
+    "gen_ai.system_instructions": [
+     {
+      "type": "text",
+      "content": "You are a friendly assistant. Think briefly about what the user needs, then use your tools to answer concretely. When a question is about visiting a city, delegate to the plan_trip tool. Reply in English."
+     }
+    ],
+    "gen_ai.tool.definitions": [
+     {
+      "type": "function",
+      "name": "get_user_profile",
+      "description": "Return the current user's name and age.",
+      "parameters": {
+       "additionalProperties": false,
+       "properties": {},
+       "type": "object"
+      }
+     },
+     {
+      "type": "function",
+      "name": "calculate_birth_year",
+      "description": "Estimate the user's birth year from their age.",
+      "parameters": {
+       "additionalProperties": false,
+       "properties": {},
+       "type": "object"
+      }
+     },
+     {
+      "type": "function",
+      "name": "recommend_activity",
+      "description": "Recommend an activity tailored to the user's age.",
+      "parameters": {
+       "additionalProperties": false,
+       "properties": {},
+       "type": "object"
+      }
+     },
+     {
+      "type": "function",
+      "name": "roll_dice",
+      "description": "Roll a die with the given number of sides and return the result.",
+      "parameters": {
+       "additionalProperties": false,
+       "properties": {
+        "sides": {
+         "default": 6,
+         "type": "integer"
+        }
+       },
+       "type": "object"
+      }
+     },
+     {
+      "type": "function",
+      "name": "plan_trip",
+      "description": "Delegate to the trip-planner sub-agent to build a day plan for a city.",
+      "parameters": {
+       "additionalProperties": false,
+       "properties": {
+        "city": {
+         "type": "string"
+        }
+       },
+       "required": [
+        "city"
+       ],
+       "type": "object"
+      }
+     }
+    ],
+    "gen_ai.usage.input_tokens": 384,
+    "gen_ai.usage.output_tokens": 39,
+    "model_request_parameters": {
+     "function_tools": [
+      {
+       "name": "get_user_profile",
+       "parameters_json_schema": {
+        "additionalProperties": false,
+        "properties": {},
+        "type": "object"
+       },
+       "description": "Return the current user's name and age.",
+       "outer_typed_dict_key": null,
+       "strict": false,
+       "sequential": false,
+       "kind": "function",
+       "metadata": null,
+       "timeout": null,
+       "defer_loading": false,
+       "unless_native": null,
+       "with_native": null,
+       "tool_kind": null,
+       "return_schema": null,
+       "include_return_schema": null,
+       "capability_id": null
+      },
+      {
+       "name": "calculate_birth_year",
+       "parameters_json_schema": {
+        "additionalProperties": false,
+        "properties": {},
+        "type": "object"
+       },
+       "description": "Estimate the user's birth year from their age.",
+       "outer_typed_dict_key": null,
+       "strict": false,
+       "sequential": false,
+       "kind": "function",
+       "metadata": null,
+       "timeout": null,
+       "defer_loading": false,
+       "unless_native": null,
+       "with_native": null,
+       "tool_kind": null,
+       "return_schema": null,
+       "include_return_schema": null,
+       "capability_id": null
+      },
+      {
+       "name": "recommend_activity",
+       "parameters_json_schema": {
+        "additionalProperties": false,
+        "properties": {},
+        "type": "object"
+       },
+       "description": "Recommend an activity tailored to the user's age.",
+       "outer_typed_dict_key": null,
+       "strict": false,
+       "sequential": false,
+       "kind": "function",
+       "metadata": null,
+       "timeout": null,
+       "defer_loading": false,
+       "unless_native": null,
+       "with_native": null,
+       "tool_kind": null,
+       "return_schema": null,
+       "include_return_schema": null,
+       "capability_id": null
+      },
+      {
+       "name": "roll_dice",
+       "parameters_json_schema": {
+        "additionalProperties": false,
+        "properties": {
+         "sides": {
+          "default": 6,
+          "type": "integer"
+         }
+        },
+        "type": "object"
+       },
+       "description": "Roll a die with the given number of sides and return the result.",
+       "outer_typed_dict_key": null,
+       "strict": false,
+       "sequential": false,
+       "kind": "function",
+       "metadata": null,
+       "timeout": null,
+       "defer_loading": false,
+       "unless_native": null,
+       "with_native": null,
+       "tool_kind": null,
+       "return_schema": null,
+       "include_return_schema": null,
+       "capability_id": null
+      },
+      {
+       "name": "plan_trip",
+       "parameters_json_schema": {
+        "additionalProperties": false,
+        "properties": {
+         "city": {
+          "type": "string"
+         }
+        },
+        "required": [
+         "city"
+        ],
+        "type": "object"
+       },
+       "description": "Delegate to the trip-planner sub-agent to build a day plan for a city.",
+       "outer_typed_dict_key": null,
+       "strict": true,
+       "sequential": false,
+       "kind": "function",
+       "metadata": null,
+       "timeout": null,
+       "defer_loading": false,
+       "unless_native": null,
+       "with_native": null,
+       "tool_kind": null,
+       "return_schema": null,
+       "include_return_schema": null,
+       "capability_id": null
+      }
+     ],
+     "native_tools": [],
+     "output_mode": "text",
+     "output_object": null,
+     "output_tools": [],
+     "prompted_output_template": null,
+     "allow_text_output": true,
+     "allow_image_output": false,
+     "instruction_parts": [
+      {
+       "content": "You are a friendly assistant. Think briefly about what the user needs, then use your tools to answer concretely. When a question is about visiting a city, delegate to the plan_trip tool. Reply in English.",
+       "dynamic": false,
+       "part_kind": "instruction"
+      }
+     ],
+     "thinking": "medium"
+    },
+    "server.address": "openrouter.ai"
+   }
+  },
+  {
+   "span_id": "01b2bb5bceaadadc",
+   "parent_span_id": "6486db1c870a0137",
+   "span_name": "invoke_agent assistant",
+   "start_timestamp": "2026-06-11T11:11:12.373040Z",
+   "end_timestamp": "2026-06-11T11:11:38.120062Z",
+   "duration": 25.747022,
+   "otel_status_code": "UNSET",
+   "otel_status_message": null,
+   "attributes": {
+    "agent_name": "assistant",
+    "final_result": "[Scrubbed due to 'session']",
+    "gen_ai.agent.call.id": "019eb661-05f4-7380-8efa-daa703246265",
+    "gen_ai.agent.name": "assistant",
+    "gen_ai.aggregated_usage.details.reasoning_tokens": 43,
+    "gen_ai.aggregated_usage.input_tokens": 1389,
+    "gen_ai.aggregated_usage.output_tokens": 499,
+    "gen_ai.conversation.id": "019eb660-e97d-724f-a577-ed9fea14618e",
+    "gen_ai.operation.name": "invoke_agent",
+    "gen_ai.system_instructions": [
+     {
+      "type": "text",
+      "content": "You are a friendly assistant. Think briefly about what the user needs, then use your tools to answer concretely. When a question is about visiting a city, delegate to the plan_trip tool. Reply in English."
+     }
+    ],
+    "logfire.metrics": {
+     "gen_ai.client.token.usage": {
+      "details": [
+       {
+        "attributes": {
+         "gen_ai.operation.name": "chat",
+         "gen_ai.provider.name": "openrouter",
+         "gen_ai.request.model": "openai/gpt-5.5",
+         "gen_ai.response.model": "openai/gpt-5.5-20260423",
+         "gen_ai.system": "openrouter",
+         "gen_ai.token.type": "input"
+        },
+        "total": 1751
+       },
+       {
+        "attributes": {
+         "gen_ai.operation.name": "chat",
+         "gen_ai.provider.name": "openrouter",
+         "gen_ai.request.model": "openai/gpt-5.5",
+         "gen_ai.response.model": "openai/gpt-5.5-20260423",
+         "gen_ai.system": "openrouter",
+         "gen_ai.token.type": "output"
+        },
+        "total": 1077
+       }
+      ],
+      "total": 2828
+     }
+    },
+    "logfire.scrubbed": [
+     {
+      "path": [
+       "attributes",
+       "final_result"
+      ],
+      "matched_substring": "session"
+     }
+    ],
+    "model_name": "openai/gpt-5.5",
+    "pydantic_ai.all_messages": [
+     {
+      "role": "user",
+      "parts": [
+       {
+        "type": "text",
+        "content": "Hi! Introduce me — my name, age and birth year — then roll a six-sided die."
+       }
+      ]
+     },
+     {
+      "role": "assistant",
+      "parts": [
+       {
+        "type": "thinking",
+        "content": "**Determining user details**\n\nI need to gather the user's profile and calculate their birth year based on their age. I'll call the user profile tool with no arguments, as it likely retrieves information for the current user. Then, I can calculate the birth year from their age, which should work since it's independently taken from the profile. Rolling the dice seems to be separate as well, so I might be able to execute everything in parallel!"
+       },
+       {
+        "type": "thinking",
+        "content": ""
+       },
+       {
+        "type": "tool_call",
+        "id": "call_wER4zboPst8F6fnmM49i0YOF",
+        "name": "get_user_profile",
+        "arguments": "{}"
+       },
+       {
+        "type": "tool_call",
+        "id": "call_CSdq8aEPmnkPmNqu0dr1brHu",
+        "name": "calculate_birth_year",
+        "arguments": "{}"
+       },
+       {
+        "type": "tool_call",
+        "id": "call_VJgMUNf6mcD4YELJ4MMzF0Xa",
+        "name": "roll_dice",
+        "arguments": "{\"sides\":6}"
+       }
+      ],
+      "finish_reason": "tool_call"
+     },
+     {
+      "role": "user",
+      "parts": [
+       {
+        "type": "tool_call_response",
+        "id": "call_wER4zboPst8F6fnmM49i0YOF",
+        "name": "get_user_profile",
+        "result": "The user's name is Kacper and they are 28 years old."
+       },
+       {
+        "type": "tool_call_response",
+        "id": "call_CSdq8aEPmnkPmNqu0dr1brHu",
+        "name": "calculate_birth_year",
+        "result": 1998
+       },
+       {
+        "type": "tool_call_response",
+        "id": "call_VJgMUNf6mcD4YELJ4MMzF0Xa",
+        "name": "roll_dice",
+        "result": 4
+       }
+      ]
+     },
+     {
+      "role": "assistant",
+      "parts": [
+       {
+        "type": "text",
+        "content": "Hi Kacper! You’re 28 years old, and your estimated birth year is 1998.\n\nI rolled a six-sided die for you: **4**."
+       }
+      ],
+      "finish_reason": "stop"
+     },
+     {
+      "role": "user",
+      "parts": [
+       {
+        "type": "text",
+        "content": "Thanks! Now I'm thinking of visiting Krakow tomorrow. Plan my day there and recommend an activity that fits my age."
+       }
+      ]
+     },
+     {
+      "role": "assistant",
+      "parts": [
+       {
+        "type": "thinking",
+        "content": "**Planning a trip with activities**\n\nI need to use tools to assist with planning a trip, focusing on recommending activities tailored to the user's age and preferences. I’m wondering if we can run these functions in parallel since the trip can be based solely on the city. It seems that I can attempt to handle the trip planning without needing additional parameters, so using parallel processing could be a good strategy. Let's make this efficient!"
+       },
+       {
+        "type": "thinking",
+        "content": ""
+       },
+       {
+        "type": "tool_call",
+        "id": "call_GdL8uAOY109U8X5D5O0Nm0x7",
+        "name": "plan_trip",
+        "arguments": "{\"city\":\"Krakow\"}"
+       },
+       {
+        "type": "tool_call",
+        "id": "call_wE8RZV9PmiGAmIRd2QPC5fuT",
+        "name": "recommend_activity",
+        "arguments": "{}"
+       }
+      ],
+      "finish_reason": "tool_call"
+     },
+     {
+      "role": "user",
+      "parts": [
+       {
+        "type": "tool_call_response",
+        "id": "call_GdL8uAOY109U8X5D5O0Nm0x7",
+        "name": "plan_trip",
+        "result": "Krakow is **foggy and cold today, around 1°C**, so I’d plan a day with atmospheric outdoor stops, short walks, and plenty of warm indoor breaks.\n\n## Great Day Plan in Krakow\n\n### Morning: Main Market Square & Old Town\nStart around **9:30 AM** at **Main Market Square**. The fog can make the historic center feel especially atmospheric, but dress warmly: coat, scarf, gloves, and good shoes.\n\n- Walk around the square and admire the **Cloth Hall** and **St. Mary’s Basilica** from outside.\n- Stop for coffee or hot chocolate at a café near the square.\n- If you want to warm up, pop into a museum or church nearby.\n\n### Late Morning: Wawel Castle\nAround **11:00 AM**, walk or take a short tram/taxi to **Wawel Castle**.\n\n- Explore the castle grounds and courtyards.\n- If the weather feels too cold, choose an indoor exhibition at Wawel.\n- The fog may limit views over the river, but it also gives the castle a dramatic winter feel.\n\n### Lunch\nAround **1:00 PM**, have a warm Polish lunch near the Old Town or on the way to Kazimierz.\n\nGood choices:\n- **Pierogi**\n- **Żurek** soup\n- **Bigos**\n- Hot tea with lemon or mulled wine if available\n\n### Afternoon: Kazimierz District\nSpend the afternoon in **Kazimierz**, Krakow’s historic Jewish district.\n\n- Wander its streets, cafés, synagogues, and small galleries.\n- Visit **Plac Nowy** for a casual snack such as zapiekanka.\n- This area is great in cold weather because you can move between sights, cafés, and indoor stops easily.\n\n### Evening: Cozy Dinner & Short Walk\nFor dinner, stay in Kazimierz or return to the Old Town.\n\n- Choose a cozy restaurant with Polish food or modern Krakow cuisine.\n- If you still have energy, take a short evening walk through the lit-up Old Town. Keep it brief because of the cold and fog.\n\n## Suggested Route\n**Main Market Square → Wawel Castle → Lunch → Kazimierz → Dinner**\n\nThis plan balances Krakow’s must-see sights with the cold, foggy weather, giving you outdoor atmosphere without spending too long outside."
+       },
+       {
+        "type": "tool_call_response",
+        "id": "call_wE8RZV9PmiGAmIRd2QPC5fuT",
+        "name": "recommend_activity",
+        "result": "Running, climbing, or an evening with a good book."
+       }
+      ]
+     },
+     {
+      "role": "assistant",
+      "parts": [
+       {
+        "type": "text",
+        "content": "Absolutely, Kacper — here’s a solid Krakow day plan for tomorrow, plus an age-suitable activity recommendation.\n\n## Day Plan for Krakow\n\n### Morning: Old Town & Main Market Square\nStart around **9:30 AM** at **Main Market Square**.\n\n- See the **Cloth Hall**\n- Visit or admire **St. Mary’s Basilica**\n- Grab coffee, tea, or hot chocolate nearby\n- Wander the surrounding Old Town streets\n\n### Late Morning: Wawel Castle\nAround **11:00 AM**, head to **Wawel Castle**.\n\n- Walk around the castle grounds and courtyards\n- If it’s cold or foggy, choose one of the indoor exhibitions\n- Take a short walk by the Vistula River if the weather is manageable\n\n### Lunch: Polish Comfort Food\nAround **1:00 PM**, stop for a warm lunch.\n\nGood options:\n- **Pierogi**\n- **Żurek**\n- **Bigos**\n- Hot tea or mulled wine\n\n### Afternoon: Kazimierz\nSpend the afternoon in **Kazimierz**, Krakow’s historic Jewish district.\n\n- Explore atmospheric streets and cafés\n- Visit a synagogue or small gallery\n- Stop at **Plac Nowy** for zapiekanka if you want a casual snack\n\n### Evening: Dinner & Old Town Lights\nHave dinner in Kazimierz or return to the Old Town.\n\nAfterward, take a short evening walk through the illuminated center if you still have energy.\n\n## Suggested Route\n**Main Market Square → Wawel Castle → Lunch → Kazimierz → Dinner**\n\n## Activity Recommendation for Your Age\nSince you’re 28, a good fit would be something active and social: **try an indoor climbing session in Krakow**. It’s fun, energetic, and ideal if the weather is cold. If you prefer something calmer, a cozy evening with a good book in a Krakow café would also work well."
+       }
+      ],
+      "finish_reason": "stop"
+     }
+    ],
+    "pydantic_ai.new_message_index": 4
+   }
+  },
+  {
+   "span_id": "e9aa7f73efbb9697",
+   "parent_span_id": "01b2bb5bceaadadc",
+   "span_name": "chat openai/gpt-5.5",
+   "start_timestamp": "2026-06-11T11:11:12.374703Z",
+   "end_timestamp": "2026-06-11T11:11:16.241929Z",
+   "duration": 3.867226,
+   "otel_status_code": "UNSET",
+   "otel_status_message": null,
+   "attributes": {
+    "gen_ai.agent.call.id": "019eb661-05f4-7380-8efa-daa703246265",
+    "gen_ai.agent.name": "assistant",
+    "gen_ai.conversation.id": "019eb660-e97d-724f-a577-ed9fea14618e",
+    "gen_ai.input.messages": [
+     {
+      "role": "user",
+      "parts": [
+       {
+        "type": "text",
+        "content": "Hi! Introduce me — my name, age and birth year — then roll a six-sided die."
+       }
+      ]
+     },
+     {
+      "role": "assistant",
+      "parts": [
+       {
+        "type": "thinking",
+        "content": "**Determining user details**\n\nI need to gather the user's profile and calculate their birth year based on their age. I'll call the user profile tool with no arguments, as it likely retrieves information for the current user. Then, I can calculate the birth year from their age, which should work since it's independently taken from the profile. Rolling the dice seems to be separate as well, so I might be able to execute everything in parallel!"
+       },
+       {
+        "type": "thinking",
+        "content": ""
+       },
+       {
+        "type": "tool_call",
+        "id": "call_wER4zboPst8F6fnmM49i0YOF",
+        "name": "get_user_profile",
+        "arguments": "{}"
+       },
+       {
+        "type": "tool_call",
+        "id": "call_CSdq8aEPmnkPmNqu0dr1brHu",
+        "name": "calculate_birth_year",
+        "arguments": "{}"
+       },
+       {
+        "type": "tool_call",
+        "id": "call_VJgMUNf6mcD4YELJ4MMzF0Xa",
+        "name": "roll_dice",
+        "arguments": "{\"sides\":6}"
+       }
+      ],
+      "finish_reason": "tool_call"
+     },
+     {
+      "role": "user",
+      "parts": [
+       {
+        "type": "tool_call_response",
+        "id": "call_wER4zboPst8F6fnmM49i0YOF",
+        "name": "get_user_profile",
+        "result": "The user's name is Kacper and they are 28 years old."
+       },
+       {
+        "type": "tool_call_response",
+        "id": "call_CSdq8aEPmnkPmNqu0dr1brHu",
+        "name": "calculate_birth_year",
+        "result": 1998
+       },
+       {
+        "type": "tool_call_response",
+        "id": "call_VJgMUNf6mcD4YELJ4MMzF0Xa",
+        "name": "roll_dice",
+        "result": 4
+       }
+      ]
+     },
+     {
+      "role": "assistant",
+      "parts": [
+       {
+        "type": "text",
+        "content": "Hi Kacper! You’re 28 years old, and your estimated birth year is 1998.\n\nI rolled a six-sided die for you: **4**."
+       }
+      ],
+      "finish_reason": "stop"
+     },
+     {
+      "role": "user",
+      "parts": [
+       {
+        "type": "text",
+        "content": "Thanks! Now I'm thinking of visiting Krakow tomorrow. Plan my day there and recommend an activity that fits my age."
+       }
+      ]
+     }
+    ],
+    "gen_ai.operation.name": "chat",
+    "gen_ai.output.messages": [
+     {
+      "role": "assistant",
+      "parts": [
+       {
+        "type": "thinking",
+        "content": "**Planning a trip with activities**\n\nI need to use tools to assist with planning a trip, focusing on recommending activities tailored to the user's age and preferences. I’m wondering if we can run these functions in parallel since the trip can be based solely on the city. It seems that I can attempt to handle the trip planning without needing additional parameters, so using parallel processing could be a good strategy. Let's make this efficient!"
+       },
+       {
+        "type": "thinking",
+        "content": ""
+       },
+       {
+        "type": "tool_call",
+        "id": "call_GdL8uAOY109U8X5D5O0Nm0x7",
+        "name": "plan_trip",
+        "arguments": "{\"city\":\"Krakow\"}"
+       },
+       {
+        "type": "tool_call",
+        "id": "call_wE8RZV9PmiGAmIRd2QPC5fuT",
+        "name": "recommend_activity",
+        "arguments": "{}"
+       }
+      ],
+      "finish_reason": "tool_call"
+     }
+    ],
+    "gen_ai.provider.name": "openrouter",
+    "gen_ai.request.model": "openai/gpt-5.5",
+    "gen_ai.response.finish_reasons": [
+     "tool_call"
+    ],
+    "gen_ai.response.id": "gen-1781176272-C6fdTWG0RqJiHIjZxIWg",
+    "gen_ai.response.model": "openai/gpt-5.5-20260423",
+    "gen_ai.system": "openrouter",
+    "gen_ai.system_instructions": [
+     {
+      "type": "text",
+      "content": "You are a friendly assistant. Think briefly about what the user needs, then use your tools to answer concretely. When a question is about visiting a city, delegate to the plan_trip tool. Reply in English."
+     }
+    ],
+    "gen_ai.tool.definitions": [
+     {
+      "type": "function",
+      "name": "get_user_profile",
+      "description": "Return the current user's name and age.",
+      "parameters": {
+       "additionalProperties": false,
+       "properties": {},
+       "type": "object"
+      }
+     },
+     {
+      "type": "function",
+      "name": "calculate_birth_year",
+      "description": "Estimate the user's birth year from their age.",
+      "parameters": {
+       "additionalProperties": false,
+       "properties": {},
+       "type": "object"
+      }
+     },
+     {
+      "type": "function",
+      "name": "recommend_activity",
+      "description": "Recommend an activity tailored to the user's age.",
+      "parameters": {
+       "additionalProperties": false,
+       "properties": {},
+       "type": "object"
+      }
+     },
+     {
+      "type": "function",
+      "name": "roll_dice",
+      "description": "Roll a die with the given number of sides and return the result.",
+      "parameters": {
+       "additionalProperties": false,
+       "properties": {
+        "sides": {
+         "default": 6,
+         "type": "integer"
+        }
+       },
+       "type": "object"
+      }
+     },
+     {
+      "type": "function",
+      "name": "plan_trip",
+      "description": "Delegate to the trip-planner sub-agent to build a day plan for a city.",
+      "parameters": {
+       "additionalProperties": false,
+       "properties": {
+        "city": {
+         "type": "string"
+        }
+       },
+       "required": [
+        "city"
+       ],
+       "type": "object"
+      }
+     }
+    ],
+    "gen_ai.usage.details.reasoning_tokens": 43,
+    "gen_ai.usage.input_tokens": 389,
+    "gen_ai.usage.output_tokens": 94,
+    "model_request_parameters": {
+     "function_tools": [
+      {
+       "name": "get_user_profile",
+       "parameters_json_schema": {
+        "additionalProperties": false,
+        "properties": {},
+        "type": "object"
+       },
+       "description": "Return the current user's name and age.",
+       "outer_typed_dict_key": null,
+       "strict": false,
+       "sequential": false,
+       "kind": "function",
+       "metadata": null,
+       "timeout": null,
+       "defer_loading": false,
+       "unless_native": null,
+       "with_native": null,
+       "tool_kind": null,
+       "return_schema": null,
+       "include_return_schema": null,
+       "capability_id": null
+      },
+      {
+       "name": "calculate_birth_year",
+       "parameters_json_schema": {
+        "additionalProperties": false,
+        "properties": {},
+        "type": "object"
+       },
+       "description": "Estimate the user's birth year from their age.",
+       "outer_typed_dict_key": null,
+       "strict": false,
+       "sequential": false,
+       "kind": "function",
+       "metadata": null,
+       "timeout": null,
+       "defer_loading": false,
+       "unless_native": null,
+       "with_native": null,
+       "tool_kind": null,
+       "return_schema": null,
+       "include_return_schema": null,
+       "capability_id": null
+      },
+      {
+       "name": "recommend_activity",
+       "parameters_json_schema": {
+        "additionalProperties": false,
+        "properties": {},
+        "type": "object"
+       },
+       "description": "Recommend an activity tailored to the user's age.",
+       "outer_typed_dict_key": null,
+       "strict": false,
+       "sequential": false,
+       "kind": "function",
+       "metadata": null,
+       "timeout": null,
+       "defer_loading": false,
+       "unless_native": null,
+       "with_native": null,
+       "tool_kind": null,
+       "return_schema": null,
+       "include_return_schema": null,
+       "capability_id": null
+      },
+      {
+       "name": "roll_dice",
+       "parameters_json_schema": {
+        "additionalProperties": false,
+        "properties": {
+         "sides": {
+          "default": 6,
+          "type": "integer"
+         }
+        },
+        "type": "object"
+       },
+       "description": "Roll a die with the given number of sides and return the result.",
+       "outer_typed_dict_key": null,
+       "strict": false,
+       "sequential": false,
+       "kind": "function",
+       "metadata": null,
+       "timeout": null,
+       "defer_loading": false,
+       "unless_native": null,
+       "with_native": null,
+       "tool_kind": null,
+       "return_schema": null,
+       "include_return_schema": null,
+       "capability_id": null
+      },
+      {
+       "name": "plan_trip",
+       "parameters_json_schema": {
+        "additionalProperties": false,
+        "properties": {
+         "city": {
+          "type": "string"
+         }
+        },
+        "required": [
+         "city"
+        ],
+        "type": "object"
+       },
+       "description": "Delegate to the trip-planner sub-agent to build a day plan for a city.",
+       "outer_typed_dict_key": null,
+       "strict": true,
+       "sequential": false,
+       "kind": "function",
+       "metadata": null,
+       "timeout": null,
+       "defer_loading": false,
+       "unless_native": null,
+       "with_native": null,
+       "tool_kind": null,
+       "return_schema": null,
+       "include_return_schema": null,
+       "capability_id": null
+      }
+     ],
+     "native_tools": [],
+     "output_mode": "text",
+     "output_object": null,
+     "output_tools": [],
+     "prompted_output_template": null,
+     "allow_text_output": true,
+     "allow_image_output": false,
+     "instruction_parts": [
+      {
+       "content": "You are a friendly assistant. Think briefly about what the user needs, then use your tools to answer concretely. When a question is about visiting a city, delegate to the plan_trip tool. Reply in English.",
+       "dynamic": false,
+       "part_kind": "instruction"
+      }
+     ],
+     "thinking": "medium"
+    },
+    "server.address": "openrouter.ai"
+   }
+  },
+  {
+   "span_id": "f276ae784a494881",
+   "parent_span_id": "01b2bb5bceaadadc",
+   "span_name": "execute_tool plan_trip",
+   "start_timestamp": "2026-06-11T11:11:16.244207Z",
+   "end_timestamp": "2026-06-11T11:11:30.648419Z",
+   "duration": 14.404212,
+   "otel_status_code": "UNSET",
+   "otel_status_message": null,
+   "attributes": {
+    "gen_ai.agent.call.id": "019eb661-05f4-7380-8efa-daa703246265",
+    "gen_ai.agent.name": "assistant",
+    "gen_ai.conversation.id": "019eb660-e97d-724f-a577-ed9fea14618e",
+    "gen_ai.operation.name": "execute_tool",
+    "gen_ai.tool.call.arguments": {
+     "city": "Krakow"
+    },
+    "gen_ai.tool.call.id": "call_GdL8uAOY109U8X5D5O0Nm0x7",
+    "gen_ai.tool.call.result": "Krakow is **foggy and cold today, around 1°C**, so I’d plan a day with atmospheric outdoor stops, short walks, and plenty of warm indoor breaks.\n\n## Great Day Plan in Krakow\n\n### Morning: Main Market Square & Old Town\nStart around **9:30 AM** at **Main Market Square**. The fog can make the historic center feel especially atmospheric, but dress warmly: coat, scarf, gloves, and good shoes.\n\n- Walk around the square and admire the **Cloth Hall** and **St. Mary’s Basilica** from outside.\n- Stop for coffee or hot chocolate at a café near the square.\n- If you want to warm up, pop into a museum or church nearby.\n\n### Late Morning: Wawel Castle\nAround **11:00 AM**, walk or take a short tram/taxi to **Wawel Castle**.\n\n- Explore the castle grounds and courtyards.\n- If the weather feels too cold, choose an indoor exhibition at Wawel.\n- The fog may limit views over the river, but it also gives the castle a dramatic winter feel.\n\n### Lunch\nAround **1:00 PM**, have a warm Polish lunch near the Old Town or on the way to Kazimierz.\n\nGood choices:\n- **Pierogi**\n- **Żurek** soup\n- **Bigos**\n- Hot tea with lemon or mulled wine if available\n\n### Afternoon: Kazimierz District\nSpend the afternoon in **Kazimierz**, Krakow’s historic Jewish district.\n\n- Wander its streets, cafés, synagogues, and small galleries.\n- Visit **Plac Nowy** for a casual snack such as zapiekanka.\n- This area is great in cold weather because you can move between sights, cafés, and indoor stops easily.\n\n### Evening: Cozy Dinner & Short Walk\nFor dinner, stay in Kazimierz or return to the Old Town.\n\n- Choose a cozy restaurant with Polish food or modern Krakow cuisine.\n- If you still have energy, take a short evening walk through the lit-up Old Town. Keep it brief because of the cold and fog.\n\n## Suggested Route\n**Main Market Square → Wawel Castle → Lunch → Kazimierz → Dinner**\n\nThis plan balances Krakow’s must-see sights with the cold, foggy weather, giving you outdoor atmosphere without spending too long outside.",
+    "gen_ai.tool.name": "plan_trip",
+    "logfire.metrics": {
+     "gen_ai.client.token.usage": {
+      "details": [
+       {
+        "attributes": {
+         "gen_ai.operation.name": "chat",
+         "gen_ai.provider.name": "openrouter",
+         "gen_ai.request.model": "openai/gpt-5.5",
+         "gen_ai.response.model": "openai/gpt-5.5-20260423",
+         "gen_ai.system": "openrouter",
+         "gen_ai.token.type": "input"
+        },
+        "total": 362
+       },
+       {
+        "attributes": {
+         "gen_ai.operation.name": "chat",
+         "gen_ai.provider.name": "openrouter",
+         "gen_ai.request.model": "openai/gpt-5.5",
+         "gen_ai.response.model": "openai/gpt-5.5-20260423",
+         "gen_ai.system": "openrouter",
+         "gen_ai.token.type": "output"
+        },
+        "total": 578
+       }
+      ],
+      "total": 940
+     }
+    }
+   }
+  },
+  {
+   "span_id": "8c8eacf520789d7b",
+   "parent_span_id": "01b2bb5bceaadadc",
+   "span_name": "execute_tool recommend_activity",
+   "start_timestamp": "2026-06-11T11:11:16.246525Z",
+   "end_timestamp": "2026-06-11T11:11:16.247543Z",
+   "duration": 0.001018,
+   "otel_status_code": "UNSET",
+   "otel_status_message": null,
+   "attributes": {
+    "gen_ai.agent.call.id": "019eb661-05f4-7380-8efa-daa703246265",
+    "gen_ai.agent.name": "assistant",
+    "gen_ai.conversation.id": "019eb660-e97d-724f-a577-ed9fea14618e",
+    "gen_ai.operation.name": "execute_tool",
+    "gen_ai.tool.call.arguments": {},
+    "gen_ai.tool.call.id": "call_wE8RZV9PmiGAmIRd2QPC5fuT",
+    "gen_ai.tool.call.result": "Running, climbing, or an evening with a good book.",
+    "gen_ai.tool.name": "recommend_activity"
+   }
+  },
+  {
+   "span_id": "8b3eafdf901d9fb8",
+   "parent_span_id": "f276ae784a494881",
+   "span_name": "invoke_agent trip_planner",
+   "start_timestamp": "2026-06-11T11:11:16.248234Z",
+   "end_timestamp": "2026-06-11T11:11:30.647153Z",
+   "duration": 14.398919,
+   "otel_status_code": "UNSET",
+   "otel_status_message": null,
+   "attributes": {
+    "agent_name": "trip_planner",
+    "baggage_conflict.gen_ai.agent.call.id": "019eb661-05f4-7380-8efa-daa703246265",
+    "baggage_conflict.gen_ai.agent.name": "assistant",
+    "baggage_conflict.gen_ai.conversation.id": "019eb660-e97d-724f-a577-ed9fea14618e",
+    "final_result": "Krakow is **foggy and cold today, around 1°C**, so I’d plan a day with atmospheric outdoor stops, short walks, and plenty of warm indoor breaks.\n\n## Great Day Plan in Krakow\n\n### Morning: Main Market Square & Old Town\nStart around **9:30 AM** at **Main Market Square**. The fog can make the historic center feel especially atmospheric, but dress warmly: coat, scarf, gloves, and good shoes.\n\n- Walk around the square and admire the **Cloth Hall** and **St. Mary’s Basilica** from outside.\n- Stop for coffee or hot chocolate at a café near the square.\n- If you want to warm up, pop into a museum or church nearby.\n\n### Late Morning: Wawel Castle\nAround **11:00 AM**, walk or take a short tram/taxi to **Wawel Castle**.\n\n- Explore the castle grounds and courtyards.\n- If the weather feels too cold, choose an indoor exhibition at Wawel.\n- The fog may limit views over the river, but it also gives the castle a dramatic winter feel.\n\n### Lunch\nAround **1:00 PM**, have a warm Polish lunch near the Old Town or on the way to Kazimierz.\n\nGood choices:\n- **Pierogi**\n- **Żurek** soup\n- **Bigos**\n- Hot tea with lemon or mulled wine if available\n\n### Afternoon: Kazimierz District\nSpend the afternoon in **Kazimierz**, Krakow’s historic Jewish district.\n\n- Wander its streets, cafés, synagogues, and small galleries.\n- Visit **Plac Nowy** for a casual snack such as zapiekanka.\n- This area is great in cold weather because you can move between sights, cafés, and indoor stops easily.\n\n### Evening: Cozy Dinner & Short Walk\nFor dinner, stay in Kazimierz or return to the Old Town.\n\n- Choose a cozy restaurant with Polish food or modern Krakow cuisine.\n- If you still have energy, take a short evening walk through the lit-up Old Town. Keep it brief because of the cold and fog.\n\n## Suggested Route\n**Main Market Square → Wawel Castle → Lunch → Kazimierz → Dinner**\n\nThis plan balances Krakow’s must-see sights with the cold, foggy weather, giving you outdoor atmosphere without spending too long outside.",
+    "gen_ai.agent.call.id": "019eb661-1516-717c-be9b-f321b5b42534",
+    "gen_ai.agent.name": "trip_planner",
+    "gen_ai.aggregated_usage.details.reasoning_tokens": 33,
+    "gen_ai.aggregated_usage.input_tokens": 362,
+    "gen_ai.aggregated_usage.output_tokens": 578,
+    "gen_ai.conversation.id": "019eb661-1516-717c-be9b-f320636fcda3",
+    "gen_ai.operation.name": "invoke_agent",
+    "gen_ai.system_instructions": [
+     {
+      "type": "text",
+      "content": "You are a local trip planner. Think step by step about the weather and the user's options, then propose a concrete plan. Reply in English."
+     }
+    ],
+    "logfire.metrics": {
+     "gen_ai.client.token.usage": {
+      "details": [
+       {
+        "attributes": {
+         "gen_ai.operation.name": "chat",
+         "gen_ai.provider.name": "openrouter",
+         "gen_ai.request.model": "openai/gpt-5.5",
+         "gen_ai.response.model": "openai/gpt-5.5-20260423",
+         "gen_ai.system": "openrouter",
+         "gen_ai.token.type": "input"
+        },
+        "total": 362
+       },
+       {
+        "attributes": {
+         "gen_ai.operation.name": "chat",
+         "gen_ai.provider.name": "openrouter",
+         "gen_ai.request.model": "openai/gpt-5.5",
+         "gen_ai.response.model": "openai/gpt-5.5-20260423",
+         "gen_ai.system": "openrouter",
+         "gen_ai.token.type": "output"
+        },
+        "total": 578
+       }
+      ],
+      "total": 940
+     }
+    },
+    "model_name": "openai/gpt-5.5",
+    "pydantic_ai.all_messages": [
+     {
+      "role": "user",
+      "parts": [
+       {
+        "type": "text",
+        "content": "Plan a great day in Krakow. Check the weather and suggest attractions."
+       }
+      ]
+     },
+     {
+      "role": "assistant",
+      "parts": [
+       {
+        "type": "thinking",
+        "content": "**Considering weather and attractions**\n\nI need to use tools to provide an answer that covers both the weather and attractions. It seems like I can utilize multiple tools to do this effectively. By using them in parallel, I can gather the necessary information quickly. It’s a straightforward approach to ensure the user gets the details they need about both elements. I want to make everything as clear and useful as possible!"
+       },
+       {
+        "type": "thinking",
+        "content": ""
+       },
+       {
+        "type": "tool_call",
+        "id": "call_unWxrzv5RDgUXO8YNyfWd6ui",
+        "name": "get_weather",
+        "arguments": "{\"city\":\"Krakow\"}"
+       },
+       {
+        "type": "tool_call",
+        "id": "call_ekzy71c0pUiIfRaze06cJPty",
+        "name": "list_attractions",
+        "arguments": "{\"city\":\"Krakow\"}"
+       }
+      ],
+      "finish_reason": "tool_call"
+     },
+     {
+      "role": "user",
+      "parts": [
+       {
+        "type": "tool_call_response",
+        "id": "call_unWxrzv5RDgUXO8YNyfWd6ui",
+        "name": "get_weather",
+        "result": "In Krakow: foggy, 1°C."
+       },
+       {
+        "type": "tool_call_response",
+        "id": "call_ekzy71c0pUiIfRaze06cJPty",
+        "name": "list_attractions",
+        "result": [
+         "Wawel Castle",
+         "Main Market Square",
+         "Kazimierz district"
+        ]
+       }
+      ]
+     },
+     {
+      "role": "assistant",
+      "parts": [
+       {
+        "type": "thinking",
+        "content": ""
+       },
+       {
+        "type": "text",
+        "content": "Krakow is **foggy and cold today, around 1°C**, so I’d plan a day with atmospheric outdoor stops, short walks, and plenty of warm indoor breaks.\n\n## Great Day Plan in Krakow\n\n### Morning: Main Market Square & Old Town\nStart around **9:30 AM** at **Main Market Square**. The fog can make the historic center feel especially atmospheric, but dress warmly: coat, scarf, gloves, and good shoes.\n\n- Walk around the square and admire the **Cloth Hall** and **St. Mary’s Basilica** from outside.\n- Stop for coffee or hot chocolate at a café near the square.\n- If you want to warm up, pop into a museum or church nearby.\n\n### Late Morning: Wawel Castle\nAround **11:00 AM**, walk or take a short tram/taxi to **Wawel Castle**.\n\n- Explore the castle grounds and courtyards.\n- If the weather feels too cold, choose an indoor exhibition at Wawel.\n- The fog may limit views over the river, but it also gives the castle a dramatic winter feel.\n\n### Lunch\nAround **1:00 PM**, have a warm Polish lunch near the Old Town or on the way to Kazimierz.\n\nGood choices:\n- **Pierogi**\n- **Żurek** soup\n- **Bigos**\n- Hot tea with lemon or mulled wine if available\n\n### Afternoon: Kazimierz District\nSpend the afternoon in **Kazimierz**, Krakow’s historic Jewish district.\n\n- Wander its streets, cafés, synagogues, and small galleries.\n- Visit **Plac Nowy** for a casual snack such as zapiekanka.\n- This area is great in cold weather because you can move between sights, cafés, and indoor stops easily.\n\n### Evening: Cozy Dinner & Short Walk\nFor dinner, stay in Kazimierz or return to the Old Town.\n\n- Choose a cozy restaurant with Polish food or modern Krakow cuisine.\n- If you still have energy, take a short evening walk through the lit-up Old Town. Keep it brief because of the cold and fog.\n\n## Suggested Route\n**Main Market Square → Wawel Castle → Lunch → Kazimierz → Dinner**\n\nThis plan balances Krakow’s must-see sights with the cold, foggy weather, giving you outdoor atmosphere without spending too long outside."
+       }
+      ],
+      "finish_reason": "stop"
+     }
+    ]
+   }
+  },
+  {
+   "span_id": "487562a884ab29ae",
+   "parent_span_id": "8b3eafdf901d9fb8",
+   "span_name": "chat openai/gpt-5.5",
+   "start_timestamp": "2026-06-11T11:11:16.250302Z",
+   "end_timestamp": "2026-06-11T11:11:18.806538Z",
+   "duration": 2.556236,
+   "otel_status_code": "UNSET",
+   "otel_status_message": null,
+   "attributes": {
+    "gen_ai.agent.call.id": "019eb661-1516-717c-be9b-f321b5b42534",
+    "gen_ai.agent.name": "trip_planner",
+    "gen_ai.conversation.id": "019eb661-1516-717c-be9b-f320636fcda3",
+    "gen_ai.input.messages": [
+     {
+      "role": "user",
+      "parts": [
+       {
+        "type": "text",
+        "content": "Plan a great day in Krakow. Check the weather and suggest attractions."
+       }
+      ]
+     }
+    ],
+    "gen_ai.operation.name": "chat",
+    "gen_ai.output.messages": [
+     {
+      "role": "assistant",
+      "parts": [
+       {
+        "type": "thinking",
+        "content": "**Considering weather and attractions**\n\nI need to use tools to provide an answer that covers both the weather and attractions. It seems like I can utilize multiple tools to do this effectively. By using them in parallel, I can gather the necessary information quickly. It’s a straightforward approach to ensure the user gets the details they need about both elements. I want to make everything as clear and useful as possible!"
+       },
+       {
+        "type": "thinking",
+        "content": ""
+       },
+       {
+        "type": "tool_call",
+        "id": "call_unWxrzv5RDgUXO8YNyfWd6ui",
+        "name": "get_weather",
+        "arguments": "{\"city\":\"Krakow\"}"
+       },
+       {
+        "type": "tool_call",
+        "id": "call_ekzy71c0pUiIfRaze06cJPty",
+        "name": "list_attractions",
+        "arguments": "{\"city\":\"Krakow\"}"
+       }
+      ],
+      "finish_reason": "tool_call"
+     }
+    ],
+    "gen_ai.provider.name": "openrouter",
+    "gen_ai.request.model": "openai/gpt-5.5",
+    "gen_ai.response.finish_reasons": [
+     "tool_call"
+    ],
+    "gen_ai.response.id": "gen-1781176276-IDPv6lgZiQCMvOdnx94S",
+    "gen_ai.response.model": "openai/gpt-5.5-20260423",
+    "gen_ai.system": "openrouter",
+    "gen_ai.system_instructions": [
+     {
+      "type": "text",
+      "content": "You are a local trip planner. Think step by step about the weather and the user's options, then propose a concrete plan. Reply in English."
+     }
+    ],
+    "gen_ai.tool.definitions": [
+     {
+      "type": "function",
+      "name": "get_weather",
+      "description": "Return the (simulated) current weather for a given city.",
+      "parameters": {
+       "additionalProperties": false,
+       "properties": {
+        "city": {
+         "type": "string"
+        }
+       },
+       "required": [
+        "city"
+       ],
+       "type": "object"
+      }
+     },
+     {
+      "type": "function",
+      "name": "list_attractions",
+      "description": "List a few notable attractions in the given city.",
+      "parameters": {
+       "additionalProperties": false,
+       "properties": {
+        "city": {
+         "type": "string"
+        }
+       },
+       "required": [
+        "city"
+       ],
+       "type": "object"
+      }
+     }
+    ],
+    "gen_ai.usage.details.reasoning_tokens": 16,
+    "gen_ai.usage.input_tokens": 122,
+    "gen_ai.usage.output_tokens": 71,
+    "model_request_parameters": {
+     "function_tools": [
+      {
+       "name": "get_weather",
+       "parameters_json_schema": {
+        "additionalProperties": false,
+        "properties": {
+         "city": {
+          "type": "string"
+         }
+        },
+        "required": [
+         "city"
+        ],
+        "type": "object"
+       },
+       "description": "Return the (simulated) current weather for a given city.",
+       "outer_typed_dict_key": null,
+       "strict": true,
+       "sequential": false,
+       "kind": "function",
+       "metadata": null,
+       "timeout": null,
+       "defer_loading": false,
+       "unless_native": null,
+       "with_native": null,
+       "tool_kind": null,
+       "return_schema": null,
+       "include_return_schema": null,
+       "capability_id": null
+      },
+      {
+       "name": "list_attractions",
+       "parameters_json_schema": {
+        "additionalProperties": false,
+        "properties": {
+         "city": {
+          "type": "string"
+         }
+        },
+        "required": [
+         "city"
+        ],
+        "type": "object"
+       },
+       "description": "List a few notable attractions in the given city.",
+       "outer_typed_dict_key": null,
+       "strict": true,
+       "sequential": false,
+       "kind": "function",
+       "metadata": null,
+       "timeout": null,
+       "defer_loading": false,
+       "unless_native": null,
+       "with_native": null,
+       "tool_kind": null,
+       "return_schema": null,
+       "include_return_schema": null,
+       "capability_id": null
+      }
+     ],
+     "native_tools": [],
+     "output_mode": "text",
+     "output_object": null,
+     "output_tools": [],
+     "prompted_output_template": null,
+     "allow_text_output": true,
+     "allow_image_output": false,
+     "instruction_parts": [
+      {
+       "content": "You are a local trip planner. Think step by step about the weather and the user's options, then propose a concrete plan. Reply in English.",
+       "dynamic": false,
+       "part_kind": "instruction"
+      }
+     ],
+     "thinking": "medium"
+    },
+    "server.address": "openrouter.ai"
+   }
+  },
+  {
+   "span_id": "6e35ee046ecc0112",
+   "parent_span_id": "8b3eafdf901d9fb8",
+   "span_name": "execute_tool get_weather",
+   "start_timestamp": "2026-06-11T11:11:18.807921Z",
+   "end_timestamp": "2026-06-11T11:11:18.808973Z",
+   "duration": 0.001052,
+   "otel_status_code": "UNSET",
+   "otel_status_message": null,
+   "attributes": {
+    "gen_ai.agent.call.id": "019eb661-1516-717c-be9b-f321b5b42534",
+    "gen_ai.agent.name": "trip_planner",
+    "gen_ai.conversation.id": "019eb661-1516-717c-be9b-f320636fcda3",
+    "gen_ai.operation.name": "execute_tool",
+    "gen_ai.tool.call.arguments": {
+     "city": "Krakow"
+    },
+    "gen_ai.tool.call.id": "call_unWxrzv5RDgUXO8YNyfWd6ui",
+    "gen_ai.tool.call.result": "In Krakow: foggy, 1°C.",
+    "gen_ai.tool.name": "get_weather"
+   }
+  },
+  {
+   "span_id": "ed3a8457f7ae5b17",
+   "parent_span_id": "8b3eafdf901d9fb8",
+   "span_name": "execute_tool list_attractions",
+   "start_timestamp": "2026-06-11T11:11:18.808330Z",
+   "end_timestamp": "2026-06-11T11:11:18.809208Z",
+   "duration": 0.000878,
+   "otel_status_code": "UNSET",
+   "otel_status_message": null,
+   "attributes": {
+    "gen_ai.agent.call.id": "019eb661-1516-717c-be9b-f321b5b42534",
+    "gen_ai.agent.name": "trip_planner",
+    "gen_ai.conversation.id": "019eb661-1516-717c-be9b-f320636fcda3",
+    "gen_ai.operation.name": "execute_tool",
+    "gen_ai.tool.call.arguments": {
+     "city": "Krakow"
+    },
+    "gen_ai.tool.call.id": "call_ekzy71c0pUiIfRaze06cJPty",
+    "gen_ai.tool.call.result": [
+     "Wawel Castle",
+     "Main Market Square",
+     "Kazimierz district"
+    ],
+    "gen_ai.tool.name": "list_attractions"
+   }
+  },
+  {
+   "span_id": "56319179e5c0e91d",
+   "parent_span_id": "8b3eafdf901d9fb8",
+   "span_name": "chat openai/gpt-5.5",
+   "start_timestamp": "2026-06-11T11:11:18.810676Z",
+   "end_timestamp": "2026-06-11T11:11:30.640473Z",
+   "duration": 11.829797,
+   "otel_status_code": "UNSET",
+   "otel_status_message": null,
+   "attributes": {
+    "gen_ai.agent.call.id": "019eb661-1516-717c-be9b-f321b5b42534",
+    "gen_ai.agent.name": "trip_planner",
+    "gen_ai.conversation.id": "019eb661-1516-717c-be9b-f320636fcda3",
+    "gen_ai.input.messages": [
+     {
+      "role": "user",
+      "parts": [
+       {
+        "type": "text",
+        "content": "Plan a great day in Krakow. Check the weather and suggest attractions."
+       }
+      ]
+     },
+     {
+      "role": "assistant",
+      "parts": [
+       {
+        "type": "thinking",
+        "content": "**Considering weather and attractions**\n\nI need to use tools to provide an answer that covers both the weather and attractions. It seems like I can utilize multiple tools to do this effectively. By using them in parallel, I can gather the necessary information quickly. It’s a straightforward approach to ensure the user gets the details they need about both elements. I want to make everything as clear and useful as possible!"
+       },
+       {
+        "type": "thinking",
+        "content": ""
+       },
+       {
+        "type": "tool_call",
+        "id": "call_unWxrzv5RDgUXO8YNyfWd6ui",
+        "name": "get_weather",
+        "arguments": "{\"city\":\"Krakow\"}"
+       },
+       {
+        "type": "tool_call",
+        "id": "call_ekzy71c0pUiIfRaze06cJPty",
+        "name": "list_attractions",
+        "arguments": "{\"city\":\"Krakow\"}"
+       }
+      ],
+      "finish_reason": "tool_call"
+     },
+     {
+      "role": "user",
+      "parts": [
+       {
+        "type": "tool_call_response",
+        "id": "call_unWxrzv5RDgUXO8YNyfWd6ui",
+        "name": "get_weather",
+        "result": "In Krakow: foggy, 1°C."
+       },
+       {
+        "type": "tool_call_response",
+        "id": "call_ekzy71c0pUiIfRaze06cJPty",
+        "name": "list_attractions",
+        "result": [
+         "Wawel Castle",
+         "Main Market Square",
+         "Kazimierz district"
+        ]
+       }
+      ]
+     }
+    ],
+    "gen_ai.operation.name": "chat",
+    "gen_ai.output.messages": [
+     {
+      "role": "assistant",
+      "parts": [
+       {
+        "type": "thinking",
+        "content": ""
+       },
+       {
+        "type": "text",
+        "content": "Krakow is **foggy and cold today, around 1°C**, so I’d plan a day with atmospheric outdoor stops, short walks, and plenty of warm indoor breaks.\n\n## Great Day Plan in Krakow\n\n### Morning: Main Market Square & Old Town\nStart around **9:30 AM** at **Main Market Square**. The fog can make the historic center feel especially atmospheric, but dress warmly: coat, scarf, gloves, and good shoes.\n\n- Walk around the square and admire the **Cloth Hall** and **St. Mary’s Basilica** from outside.\n- Stop for coffee or hot chocolate at a café near the square.\n- If you want to warm up, pop into a museum or church nearby.\n\n### Late Morning: Wawel Castle\nAround **11:00 AM**, walk or take a short tram/taxi to **Wawel Castle**.\n\n- Explore the castle grounds and courtyards.\n- If the weather feels too cold, choose an indoor exhibition at Wawel.\n- The fog may limit views over the river, but it also gives the castle a dramatic winter feel.\n\n### Lunch\nAround **1:00 PM**, have a warm Polish lunch near the Old Town or on the way to Kazimierz.\n\nGood choices:\n- **Pierogi**\n- **Żurek** soup\n- **Bigos**\n- Hot tea with lemon or mulled wine if available\n\n### Afternoon: Kazimierz District\nSpend the afternoon in **Kazimierz**, Krakow’s historic Jewish district.\n\n- Wander its streets, cafés, synagogues, and small galleries.\n- Visit **Plac Nowy** for a casual snack such as zapiekanka.\n- This area is great in cold weather because you can move between sights, cafés, and indoor stops easily.\n\n### Evening: Cozy Dinner & Short Walk\nFor dinner, stay in Kazimierz or return to the Old Town.\n\n- Choose a cozy restaurant with Polish food or modern Krakow cuisine.\n- If you still have energy, take a short evening walk through the lit-up Old Town. Keep it brief because of the cold and fog.\n\n## Suggested Route\n**Main Market Square → Wawel Castle → Lunch → Kazimierz → Dinner**\n\nThis plan balances Krakow’s must-see sights with the cold, foggy weather, giving you outdoor atmosphere without spending too long outside."
+       }
+      ],
+      "finish_reason": "stop"
+     }
+    ],
+    "gen_ai.provider.name": "openrouter",
+    "gen_ai.request.model": "openai/gpt-5.5",
+    "gen_ai.response.finish_reasons": [
+     "stop"
+    ],
+    "gen_ai.response.id": "gen-1781176278-l6yNuqEvRo5N4CJM2uBR",
+    "gen_ai.response.model": "openai/gpt-5.5-20260423",
+    "gen_ai.system": "openrouter",
+    "gen_ai.system_instructions": [
+     {
+      "type": "text",
+      "content": "You are a local trip planner. Think step by step about the weather and the user's options, then propose a concrete plan. Reply in English."
+     }
+    ],
+    "gen_ai.tool.definitions": [
+     {
+      "type": "function",
+      "name": "get_weather",
+      "description": "Return the (simulated) current weather for a given city.",
+      "parameters": {
+       "additionalProperties": false,
+       "properties": {
+        "city": {
+         "type": "string"
+        }
+       },
+       "required": [
+        "city"
+       ],
+       "type": "object"
+      }
+     },
+     {
+      "type": "function",
+      "name": "list_attractions",
+      "description": "List a few notable attractions in the given city.",
+      "parameters": {
+       "additionalProperties": false,
+       "properties": {
+        "city": {
+         "type": "string"
+        }
+       },
+       "required": [
+        "city"
+       ],
+       "type": "object"
+      }
+     }
+    ],
+    "gen_ai.usage.details.reasoning_tokens": 17,
+    "gen_ai.usage.input_tokens": 240,
+    "gen_ai.usage.output_tokens": 507,
+    "model_request_parameters": {
+     "function_tools": [
+      {
+       "name": "get_weather",
+       "parameters_json_schema": {
+        "additionalProperties": false,
+        "properties": {
+         "city": {
+          "type": "string"
+         }
+        },
+        "required": [
+         "city"
+        ],
+        "type": "object"
+       },
+       "description": "Return the (simulated) current weather for a given city.",
+       "outer_typed_dict_key": null,
+       "strict": true,
+       "sequential": false,
+       "kind": "function",
+       "metadata": null,
+       "timeout": null,
+       "defer_loading": false,
+       "unless_native": null,
+       "with_native": null,
+       "tool_kind": null,
+       "return_schema": null,
+       "include_return_schema": null,
+       "capability_id": null
+      },
+      {
+       "name": "list_attractions",
+       "parameters_json_schema": {
+        "additionalProperties": false,
+        "properties": {
+         "city": {
+          "type": "string"
+         }
+        },
+        "required": [
+         "city"
+        ],
+        "type": "object"
+       },
+       "description": "List a few notable attractions in the given city.",
+       "outer_typed_dict_key": null,
+       "strict": true,
+       "sequential": false,
+       "kind": "function",
+       "metadata": null,
+       "timeout": null,
+       "defer_loading": false,
+       "unless_native": null,
+       "with_native": null,
+       "tool_kind": null,
+       "return_schema": null,
+       "include_return_schema": null,
+       "capability_id": null
+      }
+     ],
+     "native_tools": [],
+     "output_mode": "text",
+     "output_object": null,
+     "output_tools": [],
+     "prompted_output_template": null,
+     "allow_text_output": true,
+     "allow_image_output": false,
+     "instruction_parts": [
+      {
+       "content": "You are a local trip planner. Think step by step about the weather and the user's options, then propose a concrete plan. Reply in English.",
+       "dynamic": false,
+       "part_kind": "instruction"
+      }
+     ],
+     "thinking": "medium"
+    },
+    "server.address": "openrouter.ai"
+   }
+  },
+  {
+   "span_id": "c78d2b5aadcf5e46",
+   "parent_span_id": "01b2bb5bceaadadc",
+   "span_name": "chat openai/gpt-5.5",
+   "start_timestamp": "2026-06-11T11:11:30.650976Z",
+   "end_timestamp": "2026-06-11T11:11:38.117640Z",
+   "duration": 7.466664,
+   "otel_status_code": "UNSET",
+   "otel_status_message": null,
+   "attributes": {
+    "gen_ai.agent.call.id": "019eb661-05f4-7380-8efa-daa703246265",
+    "gen_ai.agent.name": "assistant",
+    "gen_ai.conversation.id": "019eb660-e97d-724f-a577-ed9fea14618e",
+    "gen_ai.input.messages": [
+     {
+      "role": "user",
+      "parts": [
+       {
+        "type": "text",
+        "content": "Hi! Introduce me — my name, age and birth year — then roll a six-sided die."
+       }
+      ]
+     },
+     {
+      "role": "assistant",
+      "parts": [
+       {
+        "type": "thinking",
+        "content": "**Determining user details**\n\nI need to gather the user's profile and calculate their birth year based on their age. I'll call the user profile tool with no arguments, as it likely retrieves information for the current user. Then, I can calculate the birth year from their age, which should work since it's independently taken from the profile. Rolling the dice seems to be separate as well, so I might be able to execute everything in parallel!"
+       },
+       {
+        "type": "thinking",
+        "content": ""
+       },
+       {
+        "type": "tool_call",
+        "id": "call_wER4zboPst8F6fnmM49i0YOF",
+        "name": "get_user_profile",
+        "arguments": "{}"
+       },
+       {
+        "type": "tool_call",
+        "id": "call_CSdq8aEPmnkPmNqu0dr1brHu",
+        "name": "calculate_birth_year",
+        "arguments": "{}"
+       },
+       {
+        "type": "tool_call",
+        "id": "call_VJgMUNf6mcD4YELJ4MMzF0Xa",
+        "name": "roll_dice",
+        "arguments": "{\"sides\":6}"
+       }
+      ],
+      "finish_reason": "tool_call"
+     },
+     {
+      "role": "user",
+      "parts": [
+       {
+        "type": "tool_call_response",
+        "id": "call_wER4zboPst8F6fnmM49i0YOF",
+        "name": "get_user_profile",
+        "result": "The user's name is Kacper and they are 28 years old."
+       },
+       {
+        "type": "tool_call_response",
+        "id": "call_CSdq8aEPmnkPmNqu0dr1brHu",
+        "name": "calculate_birth_year",
+        "result": 1998
+       },
+       {
+        "type": "tool_call_response",
+        "id": "call_VJgMUNf6mcD4YELJ4MMzF0Xa",
+        "name": "roll_dice",
+        "result": 4
+       }
+      ]
+     },
+     {
+      "role": "assistant",
+      "parts": [
+       {
+        "type": "text",
+        "content": "Hi Kacper! You’re 28 years old, and your estimated birth year is 1998.\n\nI rolled a six-sided die for you: **4**."
+       }
+      ],
+      "finish_reason": "stop"
+     },
+     {
+      "role": "user",
+      "parts": [
+       {
+        "type": "text",
+        "content": "Thanks! Now I'm thinking of visiting Krakow tomorrow. Plan my day there and recommend an activity that fits my age."
+       }
+      ]
+     },
+     {
+      "role": "assistant",
+      "parts": [
+       {
+        "type": "thinking",
+        "content": "**Planning a trip with activities**\n\nI need to use tools to assist with planning a trip, focusing on recommending activities tailored to the user's age and preferences. I’m wondering if we can run these functions in parallel since the trip can be based solely on the city. It seems that I can attempt to handle the trip planning without needing additional parameters, so using parallel processing could be a good strategy. Let's make this efficient!"
+       },
+       {
+        "type": "thinking",
+        "content": ""
+       },
+       {
+        "type": "tool_call",
+        "id": "call_GdL8uAOY109U8X5D5O0Nm0x7",
+        "name": "plan_trip",
+        "arguments": "{\"city\":\"Krakow\"}"
+       },
+       {
+        "type": "tool_call",
+        "id": "call_wE8RZV9PmiGAmIRd2QPC5fuT",
+        "name": "recommend_activity",
+        "arguments": "{}"
+       }
+      ],
+      "finish_reason": "tool_call"
+     },
+     {
+      "role": "user",
+      "parts": [
+       {
+        "type": "tool_call_response",
+        "id": "call_GdL8uAOY109U8X5D5O0Nm0x7",
+        "name": "plan_trip",
+        "result": "Krakow is **foggy and cold today, around 1°C**, so I’d plan a day with atmospheric outdoor stops, short walks, and plenty of warm indoor breaks.\n\n## Great Day Plan in Krakow\n\n### Morning: Main Market Square & Old Town\nStart around **9:30 AM** at **Main Market Square**. The fog can make the historic center feel especially atmospheric, but dress warmly: coat, scarf, gloves, and good shoes.\n\n- Walk around the square and admire the **Cloth Hall** and **St. Mary’s Basilica** from outside.\n- Stop for coffee or hot chocolate at a café near the square.\n- If you want to warm up, pop into a museum or church nearby.\n\n### Late Morning: Wawel Castle\nAround **11:00 AM**, walk or take a short tram/taxi to **Wawel Castle**.\n\n- Explore the castle grounds and courtyards.\n- If the weather feels too cold, choose an indoor exhibition at Wawel.\n- The fog may limit views over the river, but it also gives the castle a dramatic winter feel.\n\n### Lunch\nAround **1:00 PM**, have a warm Polish lunch near the Old Town or on the way to Kazimierz.\n\nGood choices:\n- **Pierogi**\n- **Żurek** soup\n- **Bigos**\n- Hot tea with lemon or mulled wine if available\n\n### Afternoon: Kazimierz District\nSpend the afternoon in **Kazimierz**, Krakow’s historic Jewish district.\n\n- Wander its streets, cafés, synagogues, and small galleries.\n- Visit **Plac Nowy** for a casual snack such as zapiekanka.\n- This area is great in cold weather because you can move between sights, cafés, and indoor stops easily.\n\n### Evening: Cozy Dinner & Short Walk\nFor dinner, stay in Kazimierz or return to the Old Town.\n\n- Choose a cozy restaurant with Polish food or modern Krakow cuisine.\n- If you still have energy, take a short evening walk through the lit-up Old Town. Keep it brief because of the cold and fog.\n\n## Suggested Route\n**Main Market Square → Wawel Castle → Lunch → Kazimierz → Dinner**\n\nThis plan balances Krakow’s must-see sights with the cold, foggy weather, giving you outdoor atmosphere without spending too long outside."
+       },
+       {
+        "type": "tool_call_response",
+        "id": "call_wE8RZV9PmiGAmIRd2QPC5fuT",
+        "name": "recommend_activity",
+        "result": "Running, climbing, or an evening with a good book."
+       }
+      ]
+     }
+    ],
+    "gen_ai.operation.name": "chat",
+    "gen_ai.output.messages": [
+     {
+      "role": "assistant",
+      "parts": [
+       {
+        "type": "text",
+        "content": "Absolutely, Kacper — here’s a solid Krakow day plan for tomorrow, plus an age-suitable activity recommendation.\n\n## Day Plan for Krakow\n\n### Morning: Old Town & Main Market Square\nStart around **9:30 AM** at **Main Market Square**.\n\n- See the **Cloth Hall**\n- Visit or admire **St. Mary’s Basilica**\n- Grab coffee, tea, or hot chocolate nearby\n- Wander the surrounding Old Town streets\n\n### Late Morning: Wawel Castle\nAround **11:00 AM**, head to **Wawel Castle**.\n\n- Walk around the castle grounds and courtyards\n- If it’s cold or foggy, choose one of the indoor exhibitions\n- Take a short walk by the Vistula River if the weather is manageable\n\n### Lunch: Polish Comfort Food\nAround **1:00 PM**, stop for a warm lunch.\n\nGood options:\n- **Pierogi**\n- **Żurek**\n- **Bigos**\n- Hot tea or mulled wine\n\n### Afternoon: Kazimierz\nSpend the afternoon in **Kazimierz**, Krakow’s historic Jewish district.\n\n- Explore atmospheric streets and cafés\n- Visit a synagogue or small gallery\n- Stop at **Plac Nowy** for zapiekanka if you want a casual snack\n\n### Evening: Dinner & Old Town Lights\nHave dinner in Kazimierz or return to the Old Town.\n\nAfterward, take a short evening walk through the illuminated center if you still have energy.\n\n## Suggested Route\n**Main Market Square → Wawel Castle → Lunch → Kazimierz → Dinner**\n\n## Activity Recommendation for Your Age\nSince you’re 28, a good fit would be something active and social: **try an indoor climbing session in Krakow**. It’s fun, energetic, and ideal if the weather is cold. If you prefer something calmer, a cozy evening with a good book in a Krakow café would also work well."
+       }
+      ],
+      "finish_reason": "stop"
+     }
+    ],
+    "gen_ai.provider.name": "openrouter",
+    "gen_ai.request.model": "openai/gpt-5.5",
+    "gen_ai.response.finish_reasons": [
+     "stop"
+    ],
+    "gen_ai.response.id": "gen-1781176290-azBg6IOuMmi6KuiEY6Be",
+    "gen_ai.response.model": "openai/gpt-5.5-20260423",
+    "gen_ai.system": "openrouter",
+    "gen_ai.system_instructions": [
+     {
+      "type": "text",
+      "content": "You are a friendly assistant. Think briefly about what the user needs, then use your tools to answer concretely. When a question is about visiting a city, delegate to the plan_trip tool. Reply in English."
+     }
+    ],
+    "gen_ai.tool.definitions": [
+     {
+      "type": "function",
+      "name": "get_user_profile",
+      "description": "Return the current user's name and age.",
+      "parameters": {
+       "additionalProperties": false,
+       "properties": {},
+       "type": "object"
+      }
+     },
+     {
+      "type": "function",
+      "name": "calculate_birth_year",
+      "description": "Estimate the user's birth year from their age.",
+      "parameters": {
+       "additionalProperties": false,
+       "properties": {},
+       "type": "object"
+      }
+     },
+     {
+      "type": "function",
+      "name": "recommend_activity",
+      "description": "Recommend an activity tailored to the user's age.",
+      "parameters": {
+       "additionalProperties": false,
+       "properties": {},
+       "type": "object"
+      }
+     },
+     {
+      "type": "function",
+      "name": "roll_dice",
+      "description": "Roll a die with the given number of sides and return the result.",
+      "parameters": {
+       "additionalProperties": false,
+       "properties": {
+        "sides": {
+         "default": 6,
+         "type": "integer"
+        }
+       },
+       "type": "object"
+      }
+     },
+     {
+      "type": "function",
+      "name": "plan_trip",
+      "description": "Delegate to the trip-planner sub-agent to build a day plan for a city.",
+      "parameters": {
+       "additionalProperties": false,
+       "properties": {
+        "city": {
+         "type": "string"
+        }
+       },
+       "required": [
+        "city"
+       ],
+       "type": "object"
+      }
+     }
+    ],
+    "gen_ai.usage.input_tokens": 1000,
+    "gen_ai.usage.output_tokens": 405,
+    "model_request_parameters": {
+     "function_tools": [
+      {
+       "name": "get_user_profile",
+       "parameters_json_schema": {
+        "additionalProperties": false,
+        "properties": {},
+        "type": "object"
+       },
+       "description": "Return the current user's name and age.",
+       "outer_typed_dict_key": null,
+       "strict": false,
+       "sequential": false,
+       "kind": "function",
+       "metadata": null,
+       "timeout": null,
+       "defer_loading": false,
+       "unless_native": null,
+       "with_native": null,
+       "tool_kind": null,
+       "return_schema": null,
+       "include_return_schema": null,
+       "capability_id": null
+      },
+      {
+       "name": "calculate_birth_year",
+       "parameters_json_schema": {
+        "additionalProperties": false,
+        "properties": {},
+        "type": "object"
+       },
+       "description": "Estimate the user's birth year from their age.",
+       "outer_typed_dict_key": null,
+       "strict": false,
+       "sequential": false,
+       "kind": "function",
+       "metadata": null,
+       "timeout": null,
+       "defer_loading": false,
+       "unless_native": null,
+       "with_native": null,
+       "tool_kind": null,
+       "return_schema": null,
+       "include_return_schema": null,
+       "capability_id": null
+      },
+      {
+       "name": "recommend_activity",
+       "parameters_json_schema": {
+        "additionalProperties": false,
+        "properties": {},
+        "type": "object"
+       },
+       "description": "Recommend an activity tailored to the user's age.",
+       "outer_typed_dict_key": null,
+       "strict": false,
+       "sequential": false,
+       "kind": "function",
+       "metadata": null,
+       "timeout": null,
+       "defer_loading": false,
+       "unless_native": null,
+       "with_native": null,
+       "tool_kind": null,
+       "return_schema": null,
+       "include_return_schema": null,
+       "capability_id": null
+      },
+      {
+       "name": "roll_dice",
+       "parameters_json_schema": {
+        "additionalProperties": false,
+        "properties": {
+         "sides": {
+          "default": 6,
+          "type": "integer"
+         }
+        },
+        "type": "object"
+       },
+       "description": "Roll a die with the given number of sides and return the result.",
+       "outer_typed_dict_key": null,
+       "strict": false,
+       "sequential": false,
+       "kind": "function",
+       "metadata": null,
+       "timeout": null,
+       "defer_loading": false,
+       "unless_native": null,
+       "with_native": null,
+       "tool_kind": null,
+       "return_schema": null,
+       "include_return_schema": null,
+       "capability_id": null
+      },
+      {
+       "name": "plan_trip",
+       "parameters_json_schema": {
+        "additionalProperties": false,
+        "properties": {
+         "city": {
+          "type": "string"
+         }
+        },
+        "required": [
+         "city"
+        ],
+        "type": "object"
+       },
+       "description": "Delegate to the trip-planner sub-agent to build a day plan for a city.",
+       "outer_typed_dict_key": null,
+       "strict": true,
+       "sequential": false,
+       "kind": "function",
+       "metadata": null,
+       "timeout": null,
+       "defer_loading": false,
+       "unless_native": null,
+       "with_native": null,
+       "tool_kind": null,
+       "return_schema": null,
+       "include_return_schema": null,
+       "capability_id": null
+      }
+     ],
+     "native_tools": [],
+     "output_mode": "text",
+     "output_object": null,
+     "output_tools": [],
+     "prompted_output_template": null,
+     "allow_text_output": true,
+     "allow_image_output": false,
+     "instruction_parts": [
+      {
+       "content": "You are a friendly assistant. Think briefly about what the user needs, then use your tools to answer concretely. When a question is about visiting a city, delegate to the plan_trip tool. Reply in English.",
+       "dynamic": false,
+       "part_kind": "instruction"
+      }
+     ],
+     "thinking": "medium"
+    },
+    "server.address": "openrouter.ai"
+   }
+  }
+ ]
+}

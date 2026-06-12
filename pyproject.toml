@@ -1,0 +1,79 @@
+[project]
+name = "agentcanvas"
+version = "0.1.0"
+description = "Visualize Pydantic AI agent workflows from Logfire traces as an interactive HTML diagram."
+readme = "README.md"
+requires-python = ">=3.12"
+license = { text = "MIT" }
+authors = [{ name = "Vstorm", email = "info@vstorm.co" }]
+keywords = ["pydantic-ai", "logfire", "agents", "observability", "visualization"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3 :: Only",
+    "Topic :: Scientific/Engineering :: Visualization",
+    "Topic :: Software Development :: Libraries",
+]
+dependencies = [
+    "genai-prices>=0.0.66",
+    "httpx>=0.27",
+    "pydantic>=2.0",
+    "python-dotenv>=1.2.2",
+]
+
+[project.optional-dependencies]
+# Only needed to GENERATE a sample trace (main.py); not required to visualize one.
+demo = [
+    "logfire>=4.36.0",
+    "pydantic-ai==2.0.0b7",
+]
+
+[project.scripts]
+agentcanvas = "agentcanvas.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/vstorm-co/agentcanvas"
+Repository = "https://github.com/vstorm-co/agentcanvas"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["agentcanvas"]
+
+[tool.hatch.build.targets.sdist]
+include = ["agentcanvas", "README.md", "LICENSE", "assets/logo.svg"]
+
+[dependency-groups]
+dev = [
+    "pytest>=8.0",
+    "mypy>=1.11",
+    "ruff>=0.6",
+    "playwright>=1.50",
+    "pillow>=10.0",
+]
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "SIM"]
+ignore = ["E501"]  # long lines are mostly embedded HTML/CSS inside string templates
+
+[tool.mypy]
+python_version = "3.12"
+disallow_untyped_defs = true
+warn_unused_ignores = true
+warn_redundant_casts = true
+no_implicit_optional = true
+
+[[tool.mypy.overrides]]
+module = ["genai_prices.*", "logfire.*", "dotenv.*", "playwright.*", "PIL.*"]
+ignore_missing_imports = true
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
