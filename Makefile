@@ -1,9 +1,13 @@
 UV := uv run --prerelease=allow
 
-.PHONY: install build test lint format typecheck all run demo video shots clean
+.PHONY: install hooks build test lint format typecheck all run demo video shots clean
 
 install:        ## Install dependencies (dev group + demo extra)
 	uv sync --all-extras --prerelease=allow
+	$(UV) pre-commit install
+
+hooks:
+	$(UV) pre-commit run --all-files
 
 build:          ## Build wheel + sdist into dist/
 	uv build
